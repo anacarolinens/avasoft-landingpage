@@ -5,7 +5,7 @@
 
             <div class="flex items-center justify-center ">
 
-                <img id="logo" src="../assets/img/logo.svg" alt="logo avasoft"
+                <img id="logo" src="../assets/logo-avasoft.png" alt="logo avasoft"
                     class="max-w-[10%] max-h-[10%] opacity-50 mr-4" />
                 <div>
                     <h1 class="text-8xl">AVA<span>SOFT</span></h1>
