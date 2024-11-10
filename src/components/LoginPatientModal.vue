@@ -17,7 +17,7 @@
         </div>
 
         <p class="text-end text-sm">
-          <a href="#">Esqueceu a senha?</a>
+          <a @click="openPasswordResetModal">Esqueceu a senha?</a>
         </p>
         <div class="flex justify-center mt-10">
           <button type="submit" class="flex items-center bg-[#FF8139] px-12 py-3 text-white rounded-md hover:bg-[#FF5C00]">
@@ -26,14 +26,25 @@
         </div>
       </form>
     </div>
+    <!-- Modal de Recuperação de Senha -->
+    <PasswordResetModal
+        v-if="isPasswordResetModal"
+        :isOpen="isPasswordResetModal"
+        @close="closePasswordResetModal"
+      />
+
   </div>
 </template>
 
 <script>
 import axios from '../plugins/config';
 import { useToast } from 'vue-toastification';
+import PasswordResetModal from './PasswordResetModal.vue';
 
 export default {
+  components: {
+    PasswordResetModal
+  },
   props: {
     isOpen: {
       type: Boolean,
@@ -43,12 +54,19 @@ export default {
   data() {
     return {
       userName: '',
-      password: ''
+      password: '',
+      isPasswordResetModal: false
     };
   },
   methods: {
     close() {
       this.$emit('close');
+    },
+    openPasswordResetModal() {
+      this.isPasswordResetModal = true;
+    },
+    closePasswordResetModal() {
+      this.isPasswordResetModal = false;
     },
     async handleLogin() {
       const toast = useToast();
