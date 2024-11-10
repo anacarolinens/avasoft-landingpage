@@ -4,6 +4,8 @@ import HomePatientView from "./views/HomePatientView.vue";
 import PainelPatient from "./components/PainelPatient.vue";
 import LoginPatientModal from "./components/LoginPatientModal.vue";
 import ConfigPatient from "./components/ConfigPatient.vue";
+import PasswordResetModal from "./components/PasswordResetModal.vue";
+import PasswordResetConfirm from "./components/PasswordResetConfirm.vue";
 
 
 const routes = [
@@ -45,7 +47,7 @@ const routes = [
   },
   {
     path: '/PasswordReset',
-    component: PasswordReset,
+    component: PasswordResetModal,
     name: 'PasswordReset',
     meta: { hideHeader: true }
   },
