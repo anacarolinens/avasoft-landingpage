@@ -36,7 +36,19 @@ const routes = [
     name: "ConfigPatient",
     component: ConfigPatient,
     meta: { requiresAuth: true },
-  }
+  }, 
+  {
+    path: '/reset-password-confirm/:resetToken',
+    component: PasswordResetConfirm,
+    name: 'PasswordResetConfirm',
+    meta: { hideHeader: true }
+  },
+  {
+    path: '/PasswordReset',
+    component: PasswordReset,
+    name: 'PasswordReset',
+    meta: { hideHeader: true }
+  },
 ];
 
 const router = createRouter({
