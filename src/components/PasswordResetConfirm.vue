@@ -52,11 +52,24 @@
         };
     },
     methods: {
+      ValidaSenha(senha) {
+        // A senha deve ter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return regex.test(senha);
+      },
         async handlePasswordReset() {
         const toast = useToast();
         if (this.newPassword !== this.confirmPassword) {
             toast.error('As senhas não coincidem!');
             return;
+        }
+
+        // Verifica a robustez da senha
+        if (!this.ValidaSenha(this.newPassword)) {
+          toast.error(
+            'A senha deve ter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.'
+          );
+          return;
         }
 
         try {
