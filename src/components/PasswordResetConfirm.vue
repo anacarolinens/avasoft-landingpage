@@ -2,7 +2,7 @@
     <div class="container-reset flex flex-col items-center max-w-full pt-1">
         
       <!-- Logo da Avasoft -->
-      <img src="../assets/logo-avasoft.png" alt="logo avasoft" class="w-25 h-20" />
+      <img src="../assets/login-logo.png" alt="Logo Avasoft" class="w-25 h-20 mt-10" />
   
       <!-- Título de redefinição de senha -->
       <h1 class="mt-4 mb-10 text-xl font-semibold">REDEFINIÇÃO DE SENHA</h1>
