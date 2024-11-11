@@ -16,7 +16,7 @@
           <input type="password" id="pass" v-model="password" class="mt-2 mb-5 rounded border border-stone-700 p-2" placeholder="Digite sua senha aqui..." required>
         </div>
 
-        <p class="text-end text-sm">
+        <p class="text-end text-sm cursor-pointer underline">
           <a @click="openPasswordResetModal">Esqueceu a senha?</a>
         </p>
         <div class="flex justify-center mt-10">
