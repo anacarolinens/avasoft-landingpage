@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center">
     <button v-if="isWindows"
-      @click="downloadFile('https://drive.google.com/uc?export=download&id=1poW4Rjoq0tjolzBpEdhVaSd9VsvRObQH')"
+      @click="downloadFile('https://www.dropbox.com/scl/fi/r0qxausgxbflqjwb5wgjf/avasoft_windows.zip?rlkey=0fawry7d3pz0m85xq2z1hxfke&st=l0si1kfe&dl=1')"
       class="flex items-center justify-center bg-[#FF8139] px-6 py-3 text-white rounded-l-md hover:bg-[#FF5C00]">
       <span class="flex items-center">
         Baixar para Windows
@@ -26,7 +26,7 @@
       <div id="dropdown" class="dropdown absolute z-50 mt-12 w-max origin-top-right rounded-md shadow-lg right-0">
         <div class="bg-white rounded-md ring-1 ring-black ring-opacity-5">
           <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-            <a @click="downloadFile('https://drive.google.com/uc?export=download&id=1poW4Rjoq0tjolzBpEdhVaSd9VsvRObQH')" class="block px-8 py-2 text-sm text-gray-700 hover:bg-[#FFD6CE] hover:text-gray-900"
+            <a @click="downloadFile('https://www.dropbox.com/scl/fi/r0qxausgxbflqjwb5wgjf/avasoft_windows.zip?rlkey=0fawry7d3pz0m85xq2z1hxfke&st=l0si1kfe&dl=1')" class="block px-8 py-2 text-sm text-gray-700 hover:bg-[#FFD6CE] hover:text-gray-900"
               role="menuitem">Baixar para Windows</a>
             <a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:bg-[#FFD6CE] hover:text-gray-900"
               role="menuitem">Baixar para Linux</a>
