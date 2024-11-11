@@ -1,33 +1,22 @@
 <template>
     <div class="container-reset flex justify-center items-center max-w-full pt-1">
-
-        <div >
-
-            <div class="flex items-center justify-center ">
-
-                <img id="logo" src="../assets/logo-avasoft.png" alt="logo avasoft"
-                    class="max-w-[10%] max-h-[10%] opacity-50 mr-4" />
-                <div>
-                    <h1 class="text-8xl">AVA<span>SOFT</span></h1>
-                    <p class="text-center" style="color:#fff">Avaliação Antropometrica</p>
-                </div>
-
-            </div>
+        <div class="flex flex-col items-center">
+            <img src="../assets/logo-avasoft.png" alt="logo avasoft" class="w-25 h-20" />
+            <h1 class="mt-10 mb-10 rounded font-semibold">REDEFINIÇÃO DE SENHA</h1>
         </div>
-        <span class="mt-4 mb-4 " style="font-size: 25px; color:#fff">Redefina sua senha</span>
-        <form action="" id="reset-form" class="w-full max-w-md" >
-            <div class="flex flex-col">
-                <label for="newPassword" id="label-newPassword">Nova Senha</label>
-                <input type="password" id="newPassword" placeholder="Digite sua senha aqui..." v-model="newPassword">
 
-                <label for="confirmPassword" id="label-confirmPassword">Confirmar Senha</label>
-                <input type="password" id="confirmPassword" placeholder="Digite a senha novamente..."
-                    v-model="confirmPassword">
+        <form action="" class="w-full max-w-md" >
+            <div class="flex flex-col">
+                <label for="newPassword">Nova Senha</label>
+                <input type="password" placeholder="Digite sua senha aqui..." class="mt-2 mb-5 rounded border border-stone-700 p-2" v-model="newPassword">
+                
+                <label for="confirmPassword">Confirmar Senha</label>
+                <input type="password" placeholder="Digite a senha novamente..." class="mt-2 mb-5 rounded border border-stone-700 p-2" v-model="confirmPassword">
             </div>
 
             <div class="flex flex-col items-center justify-center gap-3">
-                <button type="button" class="button-reset" @click="handlePasswordReset">Redefinir</button>
-                <a class="" ><router-link to="/" class="flex items-center bg-[#FF8139]  px-12 py-3 rounded-md text-white hover:bg-[#FF5C00]"> Fazer Login </router-link></a>
+                <button type="button" class="flex items-center bg-[#FF8139]  px-12 py-3 rounded-md text-white hover:bg-[#FF5C00]" @click="handlePasswordReset">Redefinir</button>
+                <a><router-link to="/" class=" text-black"> Fazer Login </router-link></a>
             </div>
         </form>
     </div>
@@ -54,13 +43,15 @@ export default {
             }
 
             try {
-                const response = await axios.post('/reset-password-confirm', {
+                const response = await axios.post(`/reset-password-confirm/${resetToken}`, {
                     resetToken: this.resetToken,
                     newPassword: this.newPassword,
                     confirmPassword:this.confirmPassword
                 });
                 toast.success('Senha redefinida com sucesso!');
+                console.log(response);
             } catch (error) {
+                console.log(error);
                 toast.error('Erro ao redefinir a senha!');
             }
         },
@@ -69,77 +60,6 @@ export default {
 </script>
 
 <style scoped>
-#label-userName,
-#label-newPassword,
-#label-confirmPassword {
-    color: #ffffff;
-    font-size: 1em;
-    margin-top: 10px;
-    font-family: "Nanum Gothic", sans-serif;
-}
-
-#userName,
-#newPassword,
-#confirmPassword {
-    width: 100%;
-    /* max-width: 30rem; */
-    height: 45px;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1.5px solid lightgrey;
-    outline: none;
-    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    box-shadow: 2px 2px 20px 0px;
-}
-
-#userName:hover,
-#newPassword:hover,
-#confirmPassword:hover {
-    border: 2px solid lightgrey;
-    box-shadow: 0px 0px 20px -17px;
-}
-
-#userName:active,
-#newPassword:active,
-#confirmPassword:active {
-    transform: scale(0.95);
-}
-
-#userName:focus,
-#newPassword:focus,
-#confirmPassword:focus {
-    border: 2px solid grey;
-}
-
-.button-reset {
-    margin-top: 2em;
-    
-    background-color: #ff8818;
-    color: #ffffff;
-    width: 180px;
-    height: 50px;
-    border-radius: 4px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: box-shadow .15s, transform .15s;
-}
 
 
-.button-reset:hover {
-    box-shadow: rgba(255, 255, 255, 0.278) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    transform: translateY(-2px);
-}
-
-.button-reset:active {
-    box-shadow: #ffa347 0 3px 7px inset;
-    transform: translateY(2px);
-}
-
-.container-reset {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    font-family: "Nanum Gothic", sans-serif;
-}
 </style>
