@@ -27,13 +27,16 @@
 
             <div class="flex flex-col items-center justify-center gap-3">
                 <button type="button" class="button-reset" @click="handlePasswordReset">Redefinir</button>
-                <a class="" ><router-link to="/" class="underline decoration-orange-500 text-white hover:text-orange-700"> Fazer Login </router-link></a>
+                <a class="" ><router-link to="/" class="flex items-center bg-[#FF8139]  px-12 py-3 rounded-md text-white hover:bg-[#FF5C00]"> Fazer Login </router-link></a>
             </div>
         </form>
     </div>
 </template>
 
 <script>
+import axios from '../plugins/config'
+import { useToast } from 'vue-toastification'
+
 export default {
     data() {
         return {
@@ -44,21 +47,21 @@ export default {
     },
     methods: {
         async handlePasswordReset() {
+            const toast = useToast();
             if (this.newPassword !== this.confirmPassword) {
-                alert('As senhas não coincidem!');
+                toast.error('As senhas não coincidem!');
                 return;
             }
 
             try {
-                const response = await this.$axios.post('http://localhost:3000/reset-password-confirm', {
+                const response = await axios.post('/reset-password-confirm', {
                     resetToken: this.resetToken,
                     newPassword: this.newPassword,
                     confirmPassword:this.confirmPassword
                 });
-
-                console.log('Senha redefinida com sucesso:', response.data);
+                toast.success('Senha redefinida com sucesso!');
             } catch (error) {
-                console.error('Erro ao redefinir a senha:', error);
+                toast.error('Erro ao redefinir a senha!');
             }
         },
     },
@@ -122,9 +125,6 @@ export default {
     transition: box-shadow .15s, transform .15s;
 }
 
-.button-reset:focus {
-    box-shadow: #af6a0a 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-}
 
 .button-reset:hover {
     box-shadow: rgba(255, 255, 255, 0.278) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
