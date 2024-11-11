@@ -33,7 +33,7 @@
           >
             Redefinir
           </button>
-          <router-link to="/login" class="text-black cursor-pointer underline">Fazer Login</router-link>
+          <router-link to="/" class="text-black cursor-pointer underline">Fazer Login</router-link>
         </div>
       </form>
     </div>
