@@ -114,48 +114,48 @@
           >
             Redefinir
           </button>
-          <router-link to="/" class="text-black cursor-pointer underline">Fazer Login</router-link>
+          <router-link to="/login" class="text-black cursor-pointer underline">Fazer Login</router-link>
         </div>
       </form>
     </div>
   </template>
   
   <script>
-  import axios from '../plugins/config';
-  import { useToast } from 'vue-toastification';
-  
-  export default {
+    import axios from '../plugins/config';
+    import { useToast } from 'vue-toastification';
+
+    export default {
     data() {
-      return {
+        return {
         resetToken: this.$route.params.resetToken,
         newPassword: '',
         confirmPassword: '',
-      };
+        };
     },
     methods: {
-      async handlePasswordReset() {
+        async handlePasswordReset() {
         const toast = useToast();
         if (this.newPassword !== this.confirmPassword) {
-          toast.error('As senhas não coincidem!');
-          return;
+            toast.error('As senhas não coincidem!');
+            return;
         }
-  
+
         try {
-          const response = await axios.post(`/reset-password-confirm`, {
-            resetToken: this.resetToken,
+            const response = await axios.post(`/reset-password-confirm`, {
+            resetToken: this.resetToken, 
             newPassword: this.newPassword,
             confirmPassword: this.confirmPassword
-          });
-          toast.success('Senha redefinida com sucesso!');
-          console.log(response);
+            });
+            toast.success('Senha redefinida com sucesso!');
+            console.log(response);
         } catch (error) {
-          console.log(error);
-          toast.error('Erro ao redefinir a senha!');
+            console.log(error);
+            toast.error('Erro ao redefinir a senha!');
         }
-      },
+        },
     },
-  };
-  </script>
+    };
+    </script>
   
   <style scoped>
 
